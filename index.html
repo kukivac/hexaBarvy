@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .placeholder {
+            display: flex;
+            flex-flow: row;
+        }
+
+        .column > form {
+            display: flex;
+            flex-flow: column;
+        }
+        #render{
+            transition: 2000ms;
+        }
+    </style>
+</head>
+<body>
+<div class="placeholder">
+    <div class="column">
+        <form id="first-form">
+            <label>
+                00
+                <input type="radio" name="color" value="00" checked>
+            </label>
+            <label>
+                33
+                <input type="radio" name="color" value="33">
+            </label>
+            <label>
+                66
+                <input type="radio" name="color" value="66">
+            </label>
+            <label>
+                99
+                <input type="radio" name="color" value="99">
+            </label>
+            <label>
+                CC
+                <input type="radio" name="color" value="CC">
+            </label>
+            <label>
+                FF
+                <input type="radio" name="color" value="FF">
+            </label>
+        </form>
+    </div>
+    <div class="column">
+        <form id="second-form">
+            <label>
+                00
+                <input type="radio" name="color" value="00" checked>
+            </label>
+            <label>
+                33
+                <input type="radio" name="color" value="33">
+            </label>
+            <label>
+                66
+                <input type="radio" name="color" value="66">
+            </label>
+            <label>
+                99
+                <input type="radio" name="color" value="99">
+            </label>
+            <label>
+                CC
+                <input type="radio" name="color" value="CC">
+            </label>
+            <label>
+                FF
+                <input type="radio" name="color" value="FF">
+            </label>
+        </form>
+    </div>
+    <div class="column">
+        <form id="third-form">
+            <label>
+                00
+                <input type="radio" name="color" value="00" checked>
+            </label>
+            <label>
+                33
+                <input type="radio" name="color" value="33">
+            </label>
+            <label>
+                66
+                <input type="radio" name="color" value="66">
+            </label>
+            <label>
+                99
+                <input type="radio" name="color" value="99">
+            </label>
+            <label>
+                CC
+                <input type="radio" name="color" value="CC">
+            </label>
+            <label>
+                FF
+                <input type="radio" name="color" value="FF">
+            </label>
+        </form>
+    </div>
+    <div id="render"></div>
+</div>
+
+</body>
+<script>
+    let inputs = document.querySelectorAll('input[name="color"]')
+    let changeValue = function () {
+        let firstValue = Object.fromEntries(new FormData(document.getElementById("first-form")).entries()).color
+        let secondValue = Object.fromEntries(new FormData(document.getElementById("second-form")).entries()).color
+        let thirdValue = Object.fromEntries(new FormData(document.getElementById("third-form")).entries()).color
+        let color = "#" + firstValue + secondValue + thirdValue
+        let renderElement = document.getElementById("render")
+        renderElement.innerHTML = color
+        renderElement.style.backgroundColor = color
+    }
+    changeValue()
+    inputs.forEach((item) => {
+        item.addEventListener("click", changeValue)
+    })
+
+</script>
+</html>
